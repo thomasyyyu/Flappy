@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B87C0B6244D85460064CF80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0B5244D85460064CF80 /* AppDelegate.swift */; };
+		3B87C0B8244D85460064CF80 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0B7244D85460064CF80 /* GameScene.sks */; };
+		3B87C0BA244D85460064CF80 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0B9244D85460064CF80 /* Actions.sks */; };
+		3B87C0BC244D85460064CF80 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0BB244D85460064CF80 /* GameScene.swift */; };
+		3B87C0BE244D85460064CF80 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0BD244D85460064CF80 /* GameViewController.swift */; };
+		3B87C0C1244D85460064CF80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0BF244D85460064CF80 /* Main.storyboard */; };
+		3B87C0C3244D85480064CF80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0C2244D85480064CF80 /* Assets.xcassets */; };
+		3B87C0C6244D85480064CF80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0C4244D85480064CF80 /* LaunchScreen.storyboard */; };
+		3B87C0D1244D85480064CF80 /* Filpping_BirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0D0244D85480064CF80 /* Filpping_BirdTests.swift */; };
+		3B87C0DC244D85480064CF80 /* Filpping_BirdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B87C0CD244D85480064CF80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B87C0AA244D85460064CF80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B87C0B1244D85460064CF80;
+			remoteInfo = "Filpping Bird";
+		};
+		3B87C0D8244D85480064CF80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B87C0AA244D85460064CF80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B87C0B1244D85460064CF80;
+			remoteInfo = "Filpping Bird";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B87C0B2244D85460064CF80 /* Filpping Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Filpping Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B87C0B5244D85460064CF80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B87C0B7244D85460064CF80 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		3B87C0B9244D85460064CF80 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		3B87C0BB244D85460064CF80 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		3B87C0BD244D85460064CF80 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		3B87C0C0244D85460064CF80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B87C0C2244D85480064CF80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B87C0C5244D85480064CF80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B87C0C7244D85480064CF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B87C0CC244D85480064CF80 /* Filpping BirdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Filpping BirdTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B87C0D0244D85480064CF80 /* Filpping_BirdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filpping_BirdTests.swift; sourceTree = "<group>"; };
+		3B87C0D2244D85480064CF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B87C0D7244D85480064CF80 /* Filpping BirdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Filpping BirdUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filpping_BirdUITests.swift; sourceTree = "<group>"; };
+		3B87C0DD244D85480064CF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B87C0AF244D85460064CF80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B87C0C9244D85480064CF80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B87C0D4244D85480064CF80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B87C0A9244D85460064CF80 = {
+			isa = PBXGroup;
+			children = (
+				3B87C0B4244D85460064CF80 /* Filpping Bird */,
+				3B87C0CF244D85480064CF80 /* Filpping BirdTests */,
+				3B87C0DA244D85480064CF80 /* Filpping BirdUITests */,
+				3B87C0B3244D85460064CF80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B87C0B3244D85460064CF80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B87C0B2244D85460064CF80 /* Filpping Bird.app */,
+				3B87C0CC244D85480064CF80 /* Filpping BirdTests.xctest */,
+				3B87C0D7244D85480064CF80 /* Filpping BirdUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B87C0B4244D85460064CF80 /* Filpping Bird */ = {
+			isa = PBXGroup;
+			children = (
+				3B87C0B5244D85460064CF80 /* AppDelegate.swift */,
+				3B87C0B7244D85460064CF80 /* GameScene.sks */,
+				3B87C0B9244D85460064CF80 /* Actions.sks */,
+				3B87C0BB244D85460064CF80 /* GameScene.swift */,
+				3B87C0BD244D85460064CF80 /* GameViewController.swift */,
+				3B87C0BF244D85460064CF80 /* Main.storyboard */,
+				3B87C0C2244D85480064CF80 /* Assets.xcassets */,
+				3B87C0C4244D85480064CF80 /* LaunchScreen.storyboard */,
+				3B87C0C7244D85480064CF80 /* Info.plist */,
+			);
+			path = "Filpping Bird";
+			sourceTree = "<group>";
+		};
+		3B87C0CF244D85480064CF80 /* Filpping BirdTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B87C0D0244D85480064CF80 /* Filpping_BirdTests.swift */,
+				3B87C0D2244D85480064CF80 /* Info.plist */,
+			);
+			path = "Filpping BirdTests";
+			sourceTree = "<group>";
+		};
+		3B87C0DA244D85480064CF80 /* Filpping BirdUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */,
+				3B87C0DD244D85480064CF80 /* Info.plist */,
+			);
+			path = "Filpping BirdUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B87C0B1244D85460064CF80 /* Filpping Bird */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B87C0E0244D85480064CF80 /* Build configuration list for PBXNativeTarget "Filpping Bird" */;
+			buildPhases = (
+				3B87C0AE244D85460064CF80 /* Sources */,
+				3B87C0AF244D85460064CF80 /* Frameworks */,
+				3B87C0B0244D85460064CF80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Filpping Bird";
+			productName = "Filpping Bird";
+			productReference = 3B87C0B2244D85460064CF80 /* Filpping Bird.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3B87C0CB244D85480064CF80 /* Filpping BirdTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B87C0E3244D85480064CF80 /* Build configuration list for PBXNativeTarget "Filpping BirdTests" */;
+			buildPhases = (
+				3B87C0C8244D85480064CF80 /* Sources */,
+				3B87C0C9244D85480064CF80 /* Frameworks */,
+				3B87C0CA244D85480064CF80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B87C0CE244D85480064CF80 /* PBXTargetDependency */,
+			);
+			name = "Filpping BirdTests";
+			productName = "Filpping BirdTests";
+			productReference = 3B87C0CC244D85480064CF80 /* Filpping BirdTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3B87C0D6244D85480064CF80 /* Filpping BirdUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B87C0E6244D85480064CF80 /* Build configuration list for PBXNativeTarget "Filpping BirdUITests" */;
+			buildPhases = (
+				3B87C0D3244D85480064CF80 /* Sources */,
+				3B87C0D4244D85480064CF80 /* Frameworks */,
+				3B87C0D5244D85480064CF80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B87C0D9244D85480064CF80 /* PBXTargetDependency */,
+			);
+			name = "Filpping BirdUITests";
+			productName = "Filpping BirdUITests";
+			productReference = 3B87C0D7244D85480064CF80 /* Filpping BirdUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B87C0AA244D85460064CF80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Thomas Yu";
+				TargetAttributes = {
+					3B87C0B1244D85460064CF80 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					3B87C0CB244D85480064CF80 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 3B87C0B1244D85460064CF80;
+					};
+					3B87C0D6244D85480064CF80 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 3B87C0B1244D85460064CF80;
+					};
+				};
+			};
+			buildConfigurationList = 3B87C0AD244D85460064CF80 /* Build configuration list for PBXProject "Filpping Bird" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B87C0A9244D85460064CF80;
+			productRefGroup = 3B87C0B3244D85460064CF80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B87C0B1244D85460064CF80 /* Filpping Bird */,
+				3B87C0CB244D85480064CF80 /* Filpping BirdTests */,
+				3B87C0D6244D85480064CF80 /* Filpping BirdUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B87C0B0244D85460064CF80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B87C0C1244D85460064CF80 /* Main.storyboard in Resources */,
+				3B87C0B8244D85460064CF80 /* GameScene.sks in Resources */,
+				3B87C0C3244D85480064CF80 /* Assets.xcassets in Resources */,
+				3B87C0C6244D85480064CF80 /* LaunchScreen.storyboard in Resources */,
+				3B87C0BA244D85460064CF80 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B87C0CA244D85480064CF80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B87C0D5244D85480064CF80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B87C0AE244D85460064CF80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B87C0BC244D85460064CF80 /* GameScene.swift in Sources */,
+				3B87C0BE244D85460064CF80 /* GameViewController.swift in Sources */,
+				3B87C0B6244D85460064CF80 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B87C0C8244D85480064CF80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B87C0D1244D85480064CF80 /* Filpping_BirdTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B87C0D3244D85480064CF80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B87C0DC244D85480064CF80 /* Filpping_BirdUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B87C0CE244D85480064CF80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B87C0B1244D85460064CF80 /* Filpping Bird */;
+			targetProxy = 3B87C0CD244D85480064CF80 /* PBXContainerItemProxy */;
+		};
+		3B87C0D9244D85480064CF80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B87C0B1244D85460064CF80 /* Filpping Bird */;
+			targetProxy = 3B87C0D8244D85480064CF80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B87C0BF244D85460064CF80 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B87C0C0244D85460064CF80 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B87C0C4244D85480064CF80 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B87C0C5244D85480064CF80 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B87C0DE244D85480064CF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B87C0DF244D85480064CF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B87C0E1244D85480064CF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Filpping Bird/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Thomasyu.Filpping-Bird";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3B87C0E2244D85480064CF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Filpping Bird/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Thomasyu.Filpping-Bird";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3B87C0E4244D85480064CF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Filpping BirdTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Thomasyu.Filpping-BirdTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Filpping Bird.app/Filpping Bird";
+			};
+			name = Debug;
+		};
+		3B87C0E5244D85480064CF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Filpping BirdTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Thomasyu.Filpping-BirdTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Filpping Bird.app/Filpping Bird";
+			};
+			name = Release;
+		};
+		3B87C0E7244D85480064CF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Filpping BirdUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Thomasyu.Filpping-BirdUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Filpping Bird";
+			};
+			name = Debug;
+		};
+		3B87C0E8244D85480064CF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Filpping BirdUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Thomasyu.Filpping-BirdUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Filpping Bird";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B87C0AD244D85460064CF80 /* Build configuration list for PBXProject "Filpping Bird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B87C0DE244D85480064CF80 /* Debug */,
+				3B87C0DF244D85480064CF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B87C0E0244D85480064CF80 /* Build configuration list for PBXNativeTarget "Filpping Bird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B87C0E1244D85480064CF80 /* Debug */,
+				3B87C0E2244D85480064CF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B87C0E3244D85480064CF80 /* Build configuration list for PBXNativeTarget "Filpping BirdTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B87C0E4244D85480064CF80 /* Debug */,
+				3B87C0E5244D85480064CF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B87C0E6244D85480064CF80 /* Build configuration list for PBXNativeTarget "Filpping BirdUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B87C0E7244D85480064CF80 /* Debug */,
+				3B87C0E8244D85480064CF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B87C0AA244D85460064CF80 /* Project object */;
+}
