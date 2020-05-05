@@ -17,7 +17,6 @@
 		3B87C0C6244D85480064CF80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0C4244D85480064CF80 /* LaunchScreen.storyboard */; };
 		3B87C0D1244D85480064CF80 /* Filpping_BirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0D0244D85480064CF80 /* Filpping_BirdTests.swift */; };
 		3B87C0DC244D85480064CF80 /* Filpping_BirdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */; };
-		3BA50C55246126B700A9822D /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3BA50C54246126B700A9822D /* player.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		3B87C0D7244D85480064CF80 /* Filpping BirdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Filpping BirdUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filpping_BirdUITests.swift; sourceTree = "<group>"; };
 		3B87C0DD244D85480064CF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BA50C54246126B700A9822D /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 		3B87C0B4244D85460064CF80 /* Filpping Bird */ = {
 			isa = PBXGroup;
 			children = (
-				3BA50C54246126B700A9822D /* player.atlas */,
 				3B87C0B5244D85460064CF80 /* AppDelegate.swift */,
 				3B87C0B7244D85460064CF80 /* GameScene.sks */,
 				3B87C0B9244D85460064CF80 /* Actions.sks */,
@@ -245,7 +242,6 @@
 				3B87C0B8244D85460064CF80 /* GameScene.sks in Resources */,
 				3B87C0C3244D85480064CF80 /* Assets.xcassets in Resources */,
 				3B87C0C6244D85480064CF80 /* LaunchScreen.storyboard in Resources */,
-				3BA50C55246126B700A9822D /* player.atlas in Resources */,
 				3B87C0BA244D85460064CF80 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
