@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Atlas.jpeg",
+      "filename" : "flappyMan.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Atlas@2x.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Atlas@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
