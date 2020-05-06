@@ -31,40 +31,66 @@ class GameScene: SKScene{
         self.addChild(bg)
         createGround()
         createFlappyMan()
-        
-    }
-    /*
-    override func update(_ currentTime: TimeInterval) {
-        moveGround()
-    }
-    */
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isStarted == false {
-            isStarted = true
             let spawn = SKAction.run({
                 () in
                 
                 self.createPipe()
             })
+        let delay = SKAction.wait(forDuration: 3.0)
+            let spawnDelay = SKAction.sequence([spawn, delay])
+            let spawnDelayForever = SKAction.repeatForever(spawnDelay)
+            self.run(spawnDelayForever)
+            let distance = CGFloat(self.frame.width + pipPair.frame.width)
+            let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01 * distance))
+            //print(movePipes)
+            let removePipes = SKAction.removeFromParent()
+            moveandRemove = SKAction.sequence([movePipes, removePipes])
+        
+        
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        moveGround()
+        if isStarted == false{
+            isStarted = true
+            movePip()
+        }else{
+            isStarted = false
+        }
+        
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        /*
+        if isStarted == false {
+            isStarted = true
             
+            let spawn = SKAction.run({
+                () in
+                
+                self.createPipe()
+            })
             let delay = SKAction.wait(forDuration: 2.0)
             let spawnDelay = SKAction.sequence([spawn, delay])
             let spawnDelayForever = SKAction.repeatForever(spawnDelay)
             self.run(spawnDelayForever)
-       
             let distance = CGFloat(self.frame.width + pipPair.frame.width)
-            let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01*distance))
+            print(distance)
+            let movePipes = SKAction.moveBy(x: -300, y: 0, duration: TimeInterval(0.005 * distance))
+            print(movePipes)
             let removePipes = SKAction.removeFromParent()
             moveandRemove = SKAction.sequence([movePipes, removePipes])
-            
-            man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
-            man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
+            */
+        man.physicsBody?.affectedByGravity = true
+        man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
+        man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
+        /*
         }else{
             man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
             man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
         }
-
+    */
     }
     
     
@@ -75,11 +101,11 @@ class GameScene: SKScene{
         let pipDown = SKSpriteNode(imageNamed: "flappy-bird-pipe-down")
         let pipUp = SKSpriteNode(imageNamed: "flappy-bird-pipe-up")
         
-        pipDown.position = CGPoint(x: self.frame.width  , y: self.frame.height / 3 + 120)
-        pipUp.position = CGPoint(x: self.frame.width , y: self.frame.height / 3 - 800)
+        pipDown.position = CGPoint(x: self.frame.width, y: self.frame.height / 2 - 60)
+        pipUp.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 - 800)
         
-        pipDown.setScale(0.32)
-        pipUp.setScale(0.32)
+        pipDown.setScale(1)
+        pipUp.setScale(1)
         
         pipDown.physicsBody = SKPhysicsBody(rectangleOf: pipDown.size)
         pipDown.physicsBody?.categoryBitMask = PhysicsCategory.pip
@@ -97,9 +123,10 @@ class GameScene: SKScene{
         
         pipPair.addChild(pipDown)
         pipPair.addChild(pipUp)
-        
+        pipPair.name = "pipe"
         pipPair.zPosition = 1
-        print("Pip created Successfully")
+        let randomPosition = CGFloat.random(min: -300, max: 300)
+        pipPair.position.y = pipPair.position.y + randomPosition
         self.addChild(pipPair)
     }
     
@@ -114,7 +141,7 @@ class GameScene: SKScene{
         man.physicsBody?.categoryBitMask = PhysicsCategory.man
         man.physicsBody?.collisionBitMask = PhysicsCategory.ground | PhysicsCategory.pip
         man.physicsBody?.contactTestBitMask = PhysicsCategory.ground | PhysicsCategory.pip
-        man.physicsBody?.affectedByGravity = true
+        man.physicsBody?.affectedByGravity = false
         man.physicsBody?.isDynamic = true
         
         man.zPosition = 2
@@ -153,6 +180,19 @@ class GameScene: SKScene{
             if node.position.x < -((self.scene?.size.width)!){
                 node.position.x += (self.scene?.size.width)! * 3
             }
+        }))
+    }
+    
+    func movePip(){
+        self.enumerateChildNodes(withName: "pipe", using: ({
+            (node, Error) in
+            node.position.x -= 4
+            
+            /*
+            if node.position.x < -((self.scene?.size.width)!){
+                node.position.x += (self.scene?.size.width)! * 3
+            }*/
+            
         }))
     }
     /*
