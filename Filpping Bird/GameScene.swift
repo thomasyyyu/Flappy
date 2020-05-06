@@ -13,10 +13,10 @@ struct PhysicsCategory {
     static let man: UInt32 = 0x1 << 1
     static let ground: UInt32 = 0x1 << 2
     static let pip: UInt32 = 0x1 << 3
-    //static let scoreCatrgory: UInt32 = 0x1 << 3
+    static let score: UInt32 = 0x1 << 4
 }
 
-class GameScene: SKScene{
+class GameScene: SKScene, SKPhysicsContactDelegate{
     
     var ground = SKSpriteNode()
     var man = SKSpriteNode()
@@ -24,8 +24,11 @@ class GameScene: SKScene{
     var pipPair = SKNode()
     var moveandRemove = SKAction()
     var isStarted = Bool()
+    var score = Int()
+    
     
     override func didMove(to view: SKView) {
+        self.physicsWorld.contactDelegate = self
         //isRestart = true
         bg = SKSpriteNode(imageNamed: "bg")
         self.addChild(bg)
@@ -60,6 +63,17 @@ class GameScene: SKScene{
         
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody = contact.bodyA
+        let secondBody = contact.bodyB
+        
+        if firstBody.categoryBitMask == PhysicsCategory.score && secondBody.categoryBitMask == PhysicsCategory.man || firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.score{
+            score += 1
+            print(score)
+        }
+        
+        
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         /*
@@ -96,12 +110,23 @@ class GameScene: SKScene{
     
     //create combined pip
     func createPipe(){
+        let scoreNode = SKSpriteNode()
+        
+        scoreNode.size = CGSize(width: 1, height: 400)
+        scoreNode.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        scoreNode.physicsBody = SKPhysicsBody(rectangleOf: scoreNode.size)
+        scoreNode.physicsBody?.affectedByGravity = false
+        scoreNode.physicsBody?.isDynamic = false
+        scoreNode.physicsBody?.categoryBitMask = PhysicsCategory.score
+        scoreNode.physicsBody?.collisionBitMask = 0
+        scoreNode.physicsBody?.contactTestBitMask = PhysicsCategory.man
+        
         pipPair = SKNode()
         
         let pipDown = SKSpriteNode(imageNamed: "flappy-bird-pipe-down")
         let pipUp = SKSpriteNode(imageNamed: "flappy-bird-pipe-up")
         
-        pipDown.position = CGPoint(x: self.frame.width, y: self.frame.height / 2 - 60)
+        pipDown.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 + 400)
         pipUp.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 - 800)
         
         pipDown.setScale(1)
@@ -127,6 +152,8 @@ class GameScene: SKScene{
         pipPair.zPosition = 1
         let randomPosition = CGFloat.random(min: -300, max: 300)
         pipPair.position.y = pipPair.position.y + randomPosition
+        pipPair.addChild(scoreNode)
+        pipPair.run(moveandRemove)
         self.addChild(pipPair)
     }
     
@@ -136,11 +163,10 @@ class GameScene: SKScene{
         man = SKSpriteNode(imageNamed: "Atlas")
         man.setScale(0.25)
         man.position = CGPoint(x: self.frame.width / 10 - 200, y: self.frame.height / 10)
-        print("in man")
         man.physicsBody = SKPhysicsBody(circleOfRadius: man.frame.height/2)
         man.physicsBody?.categoryBitMask = PhysicsCategory.man
         man.physicsBody?.collisionBitMask = PhysicsCategory.ground | PhysicsCategory.pip
-        man.physicsBody?.contactTestBitMask = PhysicsCategory.ground | PhysicsCategory.pip
+        man.physicsBody?.contactTestBitMask = PhysicsCategory.ground | PhysicsCategory.pip | PhysicsCategory.score
         man.physicsBody?.affectedByGravity = false
         man.physicsBody?.isDynamic = true
         
@@ -187,11 +213,12 @@ class GameScene: SKScene{
         self.enumerateChildNodes(withName: "pipe", using: ({
             (node, Error) in
             node.position.x -= 4
-            
+            //need to work on the logic
             /*
             if node.position.x < -((self.scene?.size.width)!){
-                node.position.x += (self.scene?.size.width)! * 3
-            }*/
+                node.position.x = (self.scene?.size.width)! / 3
+            }
+            */
             
         }))
     }
