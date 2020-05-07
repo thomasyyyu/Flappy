@@ -25,19 +25,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveandRemove = SKAction()
     var isStarted = Bool()
     var score = Int()
-    
+    let scoreLbl = SKLabelNode()
     
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
-        //isRestart = true
+        scoreLbl.color = SKColor.brown
+        scoreLbl.position = CGPoint(x: self.frame.width, y: self.frame.height + 800 )
+        scoreLbl.text = "\(score)"
+        scoreLbl.zPosition = 5
+        self.addChild(scoreLbl)
+        
         bg = SKSpriteNode(imageNamed: "bg")
         self.addChild(bg)
+        
         createGround()
         createFlappyMan()
-            let spawn = SKAction.run({
-                () in
-                
-                self.createPipe()
+        
+        let spawn = SKAction.run({
+            () in
+            self.createPipe()
             })
         let delay = SKAction.wait(forDuration: 3.0)
             let spawnDelay = SKAction.sequence([spawn, delay])
@@ -45,7 +51,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             self.run(spawnDelayForever)
             let distance = CGFloat(self.frame.width + pipPair.frame.width)
             let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01 * distance))
-            //print(movePipes)
             let removePipes = SKAction.removeFromParent()
             moveandRemove = SKAction.sequence([movePipes, removePipes])
         
@@ -54,21 +59,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     override func update(_ currentTime: TimeInterval) {
         moveGround()
-        if isStarted == false{
-            isStarted = true
-            movePip()
-        }else{
-            isStarted = false
-        }
+        movePip()
         
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
-        
         if firstBody.categoryBitMask == PhysicsCategory.score && secondBody.categoryBitMask == PhysicsCategory.man || firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.score{
             score += 1
+            scoreLbl.text = "\(score)"
             print(score)
         }
         
@@ -76,35 +76,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        /*
-        if isStarted == false {
-            isStarted = true
-            
-            let spawn = SKAction.run({
-                () in
-                
-                self.createPipe()
-            })
-            let delay = SKAction.wait(forDuration: 2.0)
-            let spawnDelay = SKAction.sequence([spawn, delay])
-            let spawnDelayForever = SKAction.repeatForever(spawnDelay)
-            self.run(spawnDelayForever)
-            let distance = CGFloat(self.frame.width + pipPair.frame.width)
-            print(distance)
-            let movePipes = SKAction.moveBy(x: -300, y: 0, duration: TimeInterval(0.005 * distance))
-            print(movePipes)
-            let removePipes = SKAction.removeFromParent()
-            moveandRemove = SKAction.sequence([movePipes, removePipes])
-            */
         man.physicsBody?.affectedByGravity = true
         man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
         man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
-        /*
-        }else{
-            man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
-            man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
-        }
-    */
     }
     
     
@@ -112,14 +86,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func createPipe(){
         let scoreNode = SKSpriteNode()
         
-        scoreNode.size = CGSize(width: 1, height: 400)
-        scoreNode.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        scoreNode.size = CGSize(width: 1, height: 800)
+        scoreNode.position = CGPoint(x: self.frame.width, y: self.frame.height / 5)
         scoreNode.physicsBody = SKPhysicsBody(rectangleOf: scoreNode.size)
         scoreNode.physicsBody?.affectedByGravity = false
         scoreNode.physicsBody?.isDynamic = false
         scoreNode.physicsBody?.categoryBitMask = PhysicsCategory.score
         scoreNode.physicsBody?.collisionBitMask = 0
         scoreNode.physicsBody?.contactTestBitMask = PhysicsCategory.man
+        
         
         pipPair = SKNode()
         
@@ -150,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         pipPair.addChild(pipUp)
         pipPair.name = "pipe"
         pipPair.zPosition = 1
-        let randomPosition = CGFloat.random(min: -300, max: 300)
+        let randomPosition = CGFloat.random(min: -200, max: 200)
         pipPair.position.y = pipPair.position.y + randomPosition
         pipPair.addChild(scoreNode)
         pipPair.run(moveandRemove)
