@@ -1,4 +1,4 @@
-# Filpping-Bird
+# Flappy-Man
 
 Team member:
 Jason Wei(917194829) & Thomas Yu (916984372)
