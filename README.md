@@ -11,9 +11,9 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 
 - [ ] User must be able to click start to start game
 - [✔︎] User must be able to tap to make the bird flip 
-- [ ] The game must be over when the bird toches the pipe
-- [ ] User must be able to restart the game immediately once the game is over
-- [ ] User must be able to see their scores
+- [✔︎] The game must be over when the bird toches the pipe
+- [✔︎] User must be able to restart the game immediately once the game is over
+- [✔︎] User must be able to see their scores
 
 
 ##### Nice to have feature
