@@ -10,8 +10,8 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 ##### Must have feature
 
 - [ ] User must be able to click start to start game
-- [✔︎] User must be able to tap to make the bird flip 
-- [✔︎] The game must be over when the bird toches the pipe
+- [✔︎] User must be able to tap to make the man flap 
+- [✔︎] The game must be over when the man toches the pipe
 - [✔︎] User must be able to restart the game immediately once the game is over
 - [✔︎] User must be able to see their scores
 
@@ -21,6 +21,6 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 - [ ] User should be able to chose the game mode: infinite and level
 - [ ] User should be able to set the background music
 - [ ] User should be able to select the level when they select level mode
-- [ ] User should be able to play flipping bird until they die in the infinite mode
+- [ ] User should be able to play flappy man until they die in the infinite mode
 
 
