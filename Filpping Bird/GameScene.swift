@@ -25,17 +25,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveandRemove = SKAction()
     var isStarted = Bool()
     var score = Int()
-    let scoreLbl = SKLabelNode()
+    var scoreLbl = SKLabelNode()
+    var restartBtn = SKSpriteNode()
+    var isDied = Bool()
     
-    override func didMove(to view: SKView) {
+    
+    func restartSence(){
+        self.removeAllChildren()
+        self.removeAllActions()
+        isDied = false
+        score = 0
+        creatSence()
+    }
+    
+    func creatSence(){
         self.physicsWorld.contactDelegate = self
-        scoreLbl.color = SKColor.brown
-        scoreLbl.position = CGPoint(x: self.frame.width, y: self.frame.height + 800 )
+        
+        scoreLbl.fontColor = SKColor.white
+        scoreLbl.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 + 500)
         scoreLbl.text = "\(score)"
+        scoreLbl.fontName = "04b_19"
+        scoreLbl.fontSize = 100
         scoreLbl.zPosition = 5
         self.addChild(scoreLbl)
         
         bg = SKSpriteNode(imageNamed: "bg")
+        bg.zPosition = 0
         self.addChild(bg)
         
         createGround()
@@ -46,22 +61,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             self.createPipe()
             })
         let delay = SKAction.wait(forDuration: 3.0)
-            let spawnDelay = SKAction.sequence([spawn, delay])
-            let spawnDelayForever = SKAction.repeatForever(spawnDelay)
-            self.run(spawnDelayForever)
-            let distance = CGFloat(self.frame.width + pipPair.frame.width)
-            let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01 * distance))
-            let removePipes = SKAction.removeFromParent()
-            moveandRemove = SKAction.sequence([movePipes, removePipes])
-        
+        let spawnDelay = SKAction.sequence([spawn, delay])
+        let spawnDelayForever = SKAction.repeatForever(spawnDelay)
+        self.run(spawnDelayForever)
+        let distance = CGFloat(self.frame.width + pipPair.frame.width)
+        let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01 * distance))
+        let removePipes = SKAction.removeFromParent()
+        moveandRemove = SKAction.sequence([movePipes, removePipes])
         
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        moveGround()
-        movePip()
-        
+    override func didMove(to view: SKView) {
+            creatSence()
     }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if isDied == true{
+        }else{
+            moveGround()
+            movePip()
+        }
+    }
+    
+    func createRestartBtn(){
+        restartBtn = SKSpriteNode(imageNamed: "restart")
+        restartBtn.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90)
+        restartBtn.zPosition = 6
+        addChild(restartBtn)
+    }
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
@@ -69,16 +97,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if firstBody.categoryBitMask == PhysicsCategory.score && secondBody.categoryBitMask == PhysicsCategory.man || firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.score{
             score += 1
             scoreLbl.text = "\(score)"
-            print(score)
+            
         }
         
+        if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.pip || firstBody.categoryBitMask == PhysicsCategory.pip && secondBody.categoryBitMask == PhysicsCategory.man{
+            isDied = true
+            
+            enumerateChildNodes(withName: "pipe") { (node, error) in
+                node.speed = 0
+                self.removeAllActions()
+            }
+            createRestartBtn()
+        }
+        
+        if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.ground || firstBody.categoryBitMask == PhysicsCategory.ground && secondBody.categoryBitMask == PhysicsCategory.man{
+            isDied = true
+            
+            enumerateChildNodes(withName: "ground") { (node, error) in
+                node.speed = 0
+                self.removeAllActions()
+            }
+            createRestartBtn()
+        }
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        man.physicsBody?.affectedByGravity = true
-        man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
-        man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
+        if isDied == true{
+            
+        }else{
+            man.physicsBody?.affectedByGravity = true
+            man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
+            man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
+        }
+        
+        
+        for touch in touches{
+            let location = touch.location(in: self)
+            if isDied == true{
+                if restartBtn.contains(location){
+                    restartSence()
+                }
+            }
+        }
     }
     
     
@@ -125,7 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         pipPair.addChild(pipUp)
         pipPair.name = "pipe"
         pipPair.zPosition = 1
-        let randomPosition = CGFloat.random(min: -200, max: 200)
+        let randomPosition = CGFloat.random(min: -300, max: 300)
         pipPair.position.y = pipPair.position.y + randomPosition
         pipPair.addChild(scoreNode)
         pipPair.run(moveandRemove)
@@ -188,21 +249,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.enumerateChildNodes(withName: "pipe", using: ({
             (node, Error) in
             node.position.x -= 4
-            //need to work on the logic
-            /*
-            if node.position.x < -((self.scene?.size.width)!){
-                node.position.x = (self.scene?.size.width)! / 3
-            }
-            */
-            
         }))
     }
-    /*
-    func createGround(){
-        ground = SKSpriteNode(imageNamed: "Ground")
-        ground.setScale(2.5)
-        ground.position = CGPoint(x: self.frame.width / 2, y: 0 + ground.frame.height / 2)
-        self.addChild(ground)
+    
+    func movebg(){
+        self.enumerateChildNodes(withName: "bg", using: ({
+            (node, Error) in
+            node.position.x -= 4
+        }))
+
     }
-    */
 }
