@@ -27,6 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var score = Int()
     var scoreLbl = SKLabelNode()
     var restartBtn = SKSpriteNode()
+    var startBTN = SKSpriteNode()
     var isDied = Bool()
     
     
@@ -41,18 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func creatSence(){
         self.physicsWorld.contactDelegate = self
         
-        scoreLbl.fontColor = SKColor.white
-        scoreLbl.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 + 500)
-        scoreLbl.text = "\(score)"
-        scoreLbl.fontName = "04b_19"
-        scoreLbl.fontSize = 100
-        scoreLbl.zPosition = 5
-        self.addChild(scoreLbl)
-        
-        bg = SKSpriteNode(imageNamed: "bg")
-        bg.zPosition = 0
-        self.addChild(bg)
-        
+        createScoreLabel()
+        createBg()
         createGround()
         createFlappyMan()
         
@@ -72,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func didMove(to view: SKView) {
-            creatSence()
+        creatSence()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -81,6 +72,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             moveGround()
             movePip()
         }
+    }
+    
+    func createScoreLabel(){
+        scoreLbl.fontColor = SKColor.white
+        scoreLbl.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 + 500)
+        scoreLbl.text = "\(score)"
+        scoreLbl.fontName = "04b_19"
+        scoreLbl.fontSize = 100
+        scoreLbl.zPosition = 5
+        self.addChild(scoreLbl)
+    }
+    
+    func createStartBTN(){
+        startBTN = SKSpriteNode(imageNamed: "play")
+        restartBtn.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90)
+        restartBtn.zPosition = 6
+        addChild(restartBtn)
     }
     
     func createRestartBtn(){
@@ -211,6 +219,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(man)
     }
     
+    func createBg(){
+        for i in 0...1{
+            bg = SKSpriteNode(imageNamed: "bg")
+            ground.position = CGPoint(x: CGFloat(i)*ground.size.width, y: self.frame.size.height / 2)
+            bg.name = "bg"
+            bg.zPosition = 0
+            self.addChild(bg)
+        }
+    }
     
     //make ground
     func createGround(){
@@ -250,13 +267,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             (node, Error) in
             node.position.x -= 4
         }))
-    }
-    
-    func movebg(){
-        self.enumerateChildNodes(withName: "bg", using: ({
-            (node, Error) in
-            node.position.x -= 4
-        }))
-
     }
 }
