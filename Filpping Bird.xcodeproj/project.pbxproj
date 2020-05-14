@@ -19,6 +19,8 @@
 		3B87C0D1244D85480064CF80 /* Filpping_BirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0D0244D85480064CF80 /* Filpping_BirdTests.swift */; };
 		3B87C0DC244D85480064CF80 /* Filpping_BirdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */; };
 		3BA50C89246286C800A9822D /* RandomFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA50C88246286C800A9822D /* RandomFunc.swift */; };
+		3BAC04CA246CBE5500B15C21 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC04C9246CBE5500B15C21 /* MenuScene.swift */; };
+		3BAC04CE246CC71000B15C21 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC04CD246CC71000B15C21 /* MenuScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filpping_BirdUITests.swift; sourceTree = "<group>"; };
 		3B87C0DD244D85480064CF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BA50C88246286C800A9822D /* RandomFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFunc.swift; sourceTree = "<group>"; };
+		3BAC04C9246CBE5500B15C21 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		3BAC04CD246CC71000B15C21 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +118,12 @@
 				3B87C0BB244D85460064CF80 /* GameScene.swift */,
 				3B87C0BD244D85460064CF80 /* GameViewController.swift */,
 				3B87C0BF244D85460064CF80 /* Main.storyboard */,
+				3BAC04CD246CC71000B15C21 /* MenuScene.sks */,
 				3B87C0C2244D85480064CF80 /* Assets.xcassets */,
 				3B87C0C4244D85480064CF80 /* LaunchScreen.storyboard */,
 				3B87C0C7244D85480064CF80 /* Info.plist */,
 				3BA50C88246286C800A9822D /* RandomFunc.swift */,
+				3BAC04C9246CBE5500B15C21 /* MenuScene.swift */,
 			);
 			path = "Filpping Bird";
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 				3B87C0C3244D85480064CF80 /* Assets.xcassets in Resources */,
 				3B87C0C6244D85480064CF80 /* LaunchScreen.storyboard in Resources */,
 				3B87C0BA244D85460064CF80 /* Actions.sks in Resources */,
+				3BAC04CE246CC71000B15C21 /* MenuScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +283,7 @@
 			files = (
 				3BA50C89246286C800A9822D /* RandomFunc.swift in Sources */,
 				3B87C0BC244D85460064CF80 /* GameScene.swift in Sources */,
+				3BAC04CA246CBE5500B15C21 /* MenuScene.swift in Sources */,
 				3B87C0BE244D85460064CF80 /* GameViewController.swift in Sources */,
 				3B87C0B6244D85460064CF80 /* AppDelegate.swift in Sources */,
 			);

@@ -23,24 +23,62 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var bg = SKSpriteNode()
     var pipPair = SKNode()
     var moveandRemove = SKAction()
-    var isStarted = Bool()
+    var isStarted = false
     var score = Int()
     var scoreLbl = SKLabelNode()
+    var tapLbl = SKLabelNode()
     var restartBtn = SKSpriteNode()
+    var startBTN = SKSpriteNode()
     var isDied = Bool()
     
-    
-    func restartSence(){
-        self.removeAllChildren()
-        self.removeAllActions()
-        isDied = false
-        score = 0
+    override func didMove(to view: SKView) {
         creatSence()
     }
     
-    func creatSence(){
-        self.physicsWorld.contactDelegate = self
+    override func update(_ currentTime: TimeInterval) {
         
+        if isDied == true || isStarted == false{
+            
+            
+        }else{
+            moveGround()
+            movePip()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isDied == true{
+            
+        }else{
+            man.physicsBody?.affectedByGravity = true
+            man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
+            man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
+            isStarted = true
+            self.tapLbl.isHidden = true
+        }
+        
+        
+        for touch in touches{
+            let location = touch.location(in: self)
+            if isDied == true{
+                if restartBtn.contains(location){
+                    restartSence()
+                }
+            }
+        }
+    }
+    
+    func createtaplabel(){
+        tapLbl.fontColor = SKColor.white
+        tapLbl.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 )
+        tapLbl.text = "Tap to Start"
+        tapLbl.fontName = "04b_19"
+        tapLbl.fontSize = 70
+        tapLbl.zPosition = 5
+        self.addChild(tapLbl)
+    }
+    
+    func createScoreLabel(){
         scoreLbl.fontColor = SKColor.white
         scoreLbl.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 + 500)
         scoreLbl.text = "\(score)"
@@ -48,39 +86,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         scoreLbl.fontSize = 100
         scoreLbl.zPosition = 5
         self.addChild(scoreLbl)
-        
-        bg = SKSpriteNode(imageNamed: "bg")
-        bg.zPosition = 0
-        self.addChild(bg)
-        
-        createGround()
-        createFlappyMan()
-        
-        let spawn = SKAction.run({
-            () in
-            self.createPipe()
-            })
-        let delay = SKAction.wait(forDuration: 3.0)
-        let spawnDelay = SKAction.sequence([spawn, delay])
-        let spawnDelayForever = SKAction.repeatForever(spawnDelay)
-        self.run(spawnDelayForever)
-        let distance = CGFloat(self.frame.width + pipPair.frame.width)
-        let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01 * distance))
-        let removePipes = SKAction.removeFromParent()
-        moveandRemove = SKAction.sequence([movePipes, removePipes])
-        
     }
     
-    override func didMove(to view: SKView) {
-            creatSence()
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        if isDied == true{
-        }else{
-            moveGround()
-            movePip()
-        }
+    func createStartBTN(){
+        startBTN = SKSpriteNode(imageNamed: "play")
+        restartBtn.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90)
+        restartBtn.zPosition = 6
+        addChild(restartBtn)
     }
     
     func createRestartBtn(){
@@ -100,97 +112,92 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             
         }
         
-        if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.pip || firstBody.categoryBitMask == PhysicsCategory.pip && secondBody.categoryBitMask == PhysicsCategory.man{
-            isDied = true
+        else if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.pip || firstBody.categoryBitMask == PhysicsCategory.pip && secondBody.categoryBitMask == PhysicsCategory.man{
+            
             
             enumerateChildNodes(withName: "pipe") { (node, error) in
                 node.speed = 0
+                self.ground.removeAllActions()
                 self.removeAllActions()
             }
-            createRestartBtn()
+            if isDied == false{
+                isDied = true
+                createRestartBtn()
+            }
         }
         
-        if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.ground || firstBody.categoryBitMask == PhysicsCategory.ground && secondBody.categoryBitMask == PhysicsCategory.man{
-            isDied = true
+        else if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.ground || firstBody.categoryBitMask == PhysicsCategory.ground && secondBody.categoryBitMask == PhysicsCategory.man{
+            
             
             enumerateChildNodes(withName: "ground") { (node, error) in
-                node.speed = 0
+               
+               
                 self.removeAllActions()
+                self.pipPair.removeAllActions()
+                node.isPaused = true
+
             }
-            createRestartBtn()
-        }
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isDied == true{
+            if isDied == false{
+                isDied = true
+                createRestartBtn()
+            }
             
-        }else{
-            man.physicsBody?.affectedByGravity = true
-            man.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
-            man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
         }
         
-        
-        for touch in touches{
-            let location = touch.location(in: self)
-            if isDied == true{
-                if restartBtn.contains(location){
-                    restartSence()
-                }
-            }
-        }
     }
     
+
     
     //create combined pip
     func createPipe(){
-        let scoreNode = SKSpriteNode()
-        
-        scoreNode.size = CGSize(width: 1, height: 800)
-        scoreNode.position = CGPoint(x: self.frame.width, y: self.frame.height / 5)
-        scoreNode.physicsBody = SKPhysicsBody(rectangleOf: scoreNode.size)
-        scoreNode.physicsBody?.affectedByGravity = false
-        scoreNode.physicsBody?.isDynamic = false
-        scoreNode.physicsBody?.categoryBitMask = PhysicsCategory.score
-        scoreNode.physicsBody?.collisionBitMask = 0
-        scoreNode.physicsBody?.contactTestBitMask = PhysicsCategory.man
-        
-        
-        pipPair = SKNode()
-        
-        let pipDown = SKSpriteNode(imageNamed: "flappy-bird-pipe-down")
-        let pipUp = SKSpriteNode(imageNamed: "flappy-bird-pipe-up")
-        
-        pipDown.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 + 400)
-        pipUp.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 - 800)
-        
-        pipDown.setScale(1)
-        pipUp.setScale(1)
-        
-        pipDown.physicsBody = SKPhysicsBody(rectangleOf: pipDown.size)
-        pipDown.physicsBody?.categoryBitMask = PhysicsCategory.pip
-        pipDown.physicsBody?.collisionBitMask = PhysicsCategory.man
-        pipDown.physicsBody?.contactTestBitMask = PhysicsCategory.man
-        pipDown.physicsBody?.isDynamic = false
-        pipDown.physicsBody?.affectedByGravity = false
-        
-        pipUp.physicsBody = SKPhysicsBody(rectangleOf: pipDown.size)
-        pipUp.physicsBody?.categoryBitMask = PhysicsCategory.pip
-        pipUp.physicsBody?.collisionBitMask = PhysicsCategory.man
-        pipUp.physicsBody?.contactTestBitMask = PhysicsCategory.man
-        pipUp.physicsBody?.isDynamic = false
-        pipUp.physicsBody?.affectedByGravity = false
-        
-        pipPair.addChild(pipDown)
-        pipPair.addChild(pipUp)
-        pipPair.name = "pipe"
-        pipPair.zPosition = 1
-        let randomPosition = CGFloat.random(min: -300, max: 300)
-        pipPair.position.y = pipPair.position.y + randomPosition
-        pipPair.addChild(scoreNode)
-        pipPair.run(moveandRemove)
-        self.addChild(pipPair)
+        if isStarted == true{
+            let scoreNode = SKSpriteNode()
+            
+            scoreNode.size = CGSize(width: 1, height: 800)
+            scoreNode.position = CGPoint(x: self.frame.width, y: self.frame.height / 5)
+            scoreNode.physicsBody = SKPhysicsBody(rectangleOf: scoreNode.size)
+            scoreNode.physicsBody?.affectedByGravity = false
+            scoreNode.physicsBody?.isDynamic = false
+            scoreNode.physicsBody?.categoryBitMask = PhysicsCategory.score
+            scoreNode.physicsBody?.collisionBitMask = 0
+            scoreNode.physicsBody?.contactTestBitMask = PhysicsCategory.man
+            
+            
+            pipPair = SKNode()
+            
+            let pipDown = SKSpriteNode(imageNamed: "flappy-bird-pipe-down")
+            let pipUp = SKSpriteNode(imageNamed: "flappy-bird-pipe-up")
+            
+            pipDown.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 + 400)
+            pipUp.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 - 800)
+            
+            pipDown.setScale(1)
+            pipUp.setScale(1)
+            
+            pipDown.physicsBody = SKPhysicsBody(rectangleOf: pipDown.size)
+            pipDown.physicsBody?.categoryBitMask = PhysicsCategory.pip
+            pipDown.physicsBody?.collisionBitMask = PhysicsCategory.man
+            pipDown.physicsBody?.contactTestBitMask = PhysicsCategory.man
+            pipDown.physicsBody?.isDynamic = false
+            pipDown.physicsBody?.affectedByGravity = false
+            
+            pipUp.physicsBody = SKPhysicsBody(rectangleOf: pipDown.size)
+            pipUp.physicsBody?.categoryBitMask = PhysicsCategory.pip
+            pipUp.physicsBody?.collisionBitMask = PhysicsCategory.man
+            pipUp.physicsBody?.contactTestBitMask = PhysicsCategory.man
+            pipUp.physicsBody?.isDynamic = false
+            pipUp.physicsBody?.affectedByGravity = false
+            
+            pipPair.addChild(pipDown)
+            pipPair.addChild(pipUp)
+            pipPair.name = "pipe"
+            pipPair.zPosition = 1
+            let randomPosition = CGFloat.random(min: -300, max: 300)
+            pipPair.position.y = pipPair.position.y + randomPosition
+            pipPair.addChild(scoreNode)
+            pipPair.run(moveandRemove)
+            self.addChild(pipPair)
+        }
     }
     
     
@@ -211,13 +218,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(man)
     }
     
+    func createBg(){
+        for i in 0...1{
+            bg = SKSpriteNode(imageNamed: "bg")
+            ground.position = CGPoint(x: CGFloat(i)*ground.size.width, y: self.frame.size.height/2)
+            bg.name = "bg"
+            bg.zPosition = 0
+            self.addChild(bg)
+        }
+    }
     
     //make ground
     func createGround(){
         for i in 0...3{
             ground = SKSpriteNode(imageNamed: "Ground")
             ground.size = CGSize(width: (self.scene?.size.width)!, height: 250)
-            ground.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            ground.anchorPoint = CGPoint(x: 0.5 ,y:0.5)
             ground.name = "ground"
             ground.position = CGPoint(x: CGFloat(i)*ground.size.width, y: -(self.frame.size.height / 2))
             
@@ -233,6 +249,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             self.addChild(ground)
         }
     }
+    
+    func restartSence(){
+            self.removeAllChildren()
+            self.removeAllActions()
+            isDied = false
+            score = 0
+            isStarted = false
+            creatSence()
+            self.tapLbl.isHidden = false
+
+       }
+       
+       func creatSence(){
+        print(self.position)
+        print(self.size)
+        print(self.anchorPoint)
+           self.physicsWorld.contactDelegate = self
+           createtaplabel()
+           createScoreLabel()
+           createBg()
+           createGround()
+           createFlappyMan()
+           let spawn = SKAction.run({
+               () in
+               self.createPipe()
+                    
+               })
+           let delay = SKAction.wait(forDuration: 3.0)
+           let spawnDelay = SKAction.sequence([spawn, delay])
+           let spawnDelayForever = SKAction.repeatForever(spawnDelay)
+           self.run(spawnDelayForever)
+           let distance = CGFloat(self.frame.width + pipPair.frame.width)
+           let movePipes = SKAction.moveBy(x: -distance, y: 0, duration: TimeInterval(0.01 * distance))
+           let removePipes = SKAction.removeFromParent()
+           moveandRemove = SKAction.sequence([movePipes, removePipes])
+           
+       }
     
     //moving ground
     func moveGround() {
@@ -250,13 +303,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             (node, Error) in
             node.position.x -= 4
         }))
-    }
-    
-    func movebg(){
-        self.enumerateChildNodes(withName: "bg", using: ({
-            (node, Error) in
-            node.position.x -= 4
-        }))
-
     }
 }
