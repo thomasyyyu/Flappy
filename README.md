@@ -9,11 +9,11 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 #	Proposal
 ##### Must have feature
 
--[✔︎] User must be able to click start to start game
--[✔︎] User must be able to tap to make the man flap 
--[✔︎] The game must be over when the man toches the pipe
--[✔︎] User must be able to restart the game immediately once the game is over
--[✔︎] User must be able to see their scores
+- [✔︎] User must be able to click start to start game <br />
+- [✔︎] User must be able to tap to make the man flap <br />
+- [✔︎] The game must be over when the man toches the pipe <br />
+- [✔︎] User must be able to restart the game immediately once the game is over <br />
+- [✔︎] User must be able to see their scores <br />
 
 
 ##### Nice to have feature
