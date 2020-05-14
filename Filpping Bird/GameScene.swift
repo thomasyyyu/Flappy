@@ -36,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
         if isDied == true || isStarted == false{
             
             
@@ -72,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         tapLbl.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 )
         tapLbl.text = "Tap to Start"
         tapLbl.fontName = "04b_19"
-        tapLbl.fontSize = 50
+        tapLbl.fontSize = 70
         tapLbl.zPosition = 5
         self.addChild(tapLbl)
     }
@@ -111,24 +112,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             
         }
         
-        if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.pip || firstBody.categoryBitMask == PhysicsCategory.pip && secondBody.categoryBitMask == PhysicsCategory.man{
-            isDied = true
+        else if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.pip || firstBody.categoryBitMask == PhysicsCategory.pip && secondBody.categoryBitMask == PhysicsCategory.man{
+            
             
             enumerateChildNodes(withName: "pipe") { (node, error) in
                 node.speed = 0
+                self.ground.removeAllActions()
                 self.removeAllActions()
             }
-            createRestartBtn()
+            if isDied == false{
+                isDied = true
+                createRestartBtn()
+            }
         }
         
-        if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.ground || firstBody.categoryBitMask == PhysicsCategory.ground && secondBody.categoryBitMask == PhysicsCategory.man{
-            isDied = true
+        else if firstBody.categoryBitMask == PhysicsCategory.man && secondBody.categoryBitMask == PhysicsCategory.ground || firstBody.categoryBitMask == PhysicsCategory.ground && secondBody.categoryBitMask == PhysicsCategory.man{
+            
             
             enumerateChildNodes(withName: "ground") { (node, error) in
-                node.speed = 0
+               
+               
                 self.removeAllActions()
+                self.pipPair.removeAllActions()
+                node.isPaused = true
+
             }
-            createRestartBtn()
+            if isDied == false{
+                isDied = true
+                createRestartBtn()
+            }
+            
         }
         
     }
@@ -208,7 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func createBg(){
         for i in 0...1{
             bg = SKSpriteNode(imageNamed: "bg")
-            ground.position = CGPoint(x: CGFloat(i)*ground.size.width, y: self.frame.size.height / 2)
+            ground.position = CGPoint(x: CGFloat(i)*ground.size.width, y: self.frame.size.height/2)
             bg.name = "bg"
             bg.zPosition = 0
             self.addChild(bg)
@@ -220,7 +233,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         for i in 0...3{
             ground = SKSpriteNode(imageNamed: "Ground")
             ground.size = CGSize(width: (self.scene?.size.width)!, height: 250)
-            ground.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            ground.anchorPoint = CGPoint(x: 0.5 ,y:0.5)
             ground.name = "ground"
             ground.position = CGPoint(x: CGFloat(i)*ground.size.width, y: -(self.frame.size.height / 2))
             
@@ -245,9 +258,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             isStarted = false
             creatSence()
             self.tapLbl.isHidden = false
+
        }
        
        func creatSence(){
+        print(self.position)
+        print(self.size)
+        print(self.anchorPoint)
            self.physicsWorld.contactDelegate = self
            createtaplabel()
            createScoreLabel()
