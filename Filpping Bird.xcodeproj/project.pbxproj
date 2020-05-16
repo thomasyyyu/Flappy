@@ -21,6 +21,7 @@
 		3BA50C89246286C800A9822D /* RandomFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA50C88246286C800A9822D /* RandomFunc.swift */; };
 		3BAC04CA246CBE5500B15C21 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC04C9246CBE5500B15C21 /* MenuScene.swift */; };
 		3BAC04CE246CC71000B15C21 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC04CD246CC71000B15C21 /* MenuScene.sks */; };
+		3BAC04D0246D238500B15C21 /* passSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC04CF246D238500B15C21 /* passSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		3BA50C88246286C800A9822D /* RandomFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFunc.swift; sourceTree = "<group>"; };
 		3BAC04C9246CBE5500B15C21 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		3BAC04CD246CC71000B15C21 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		3BAC04CF246D238500B15C21 /* passSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = passSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				3B87C0B5244D85460064CF80 /* AppDelegate.swift */,
 				3B87C0B7244D85460064CF80 /* GameScene.sks */,
 				3B87C0B9244D85460064CF80 /* Actions.sks */,
+				3BAC04CF246D238500B15C21 /* passSound.wav */,
 				3B87C0BB244D85460064CF80 /* GameScene.swift */,
 				3B87C0BD244D85460064CF80 /* GameViewController.swift */,
 				3B87C0BF244D85460064CF80 /* Main.storyboard */,
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B87C0C1244D85460064CF80 /* Main.storyboard in Resources */,
+				3BAC04D0246D238500B15C21 /* passSound.wav in Resources */,
 				3B3655B9246B705000A92BFA /* 04B_19__.TTF in Resources */,
 				3B87C0B8244D85460064CF80 /* GameScene.sks in Resources */,
 				3B87C0C3244D85480064CF80 /* Assets.xcassets in Resources */,
