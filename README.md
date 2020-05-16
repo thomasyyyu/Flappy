@@ -21,7 +21,7 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 ##### Nice to have feature
 
 - [x] User should be able to go back to the main menu <br />
-- [] User should be able to set the background music <br />
+- [ ] User should be able to set the background music <br />
 - [x] User should be able to mute the background music <br />
 - [ ] User should be able to chose the game difficulty <br />
 - [ ] User should be able to gain double score when he touches the coin in difficult mode <br />
