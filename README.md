@@ -21,8 +21,8 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 ##### Nice to have feature
 
 - [x] User should be able to go back to the main menu <br />
-- [ ] User should be able to set the background music <br />
-- [ ] User should be able to mute the background music <br />
+- [] User should be able to set the background music <br />
+- [x] User should be able to mute the background music <br />
 - [ ] User should be able to chose the game difficulty <br />
 - [ ] User should be able to gain double score when he touches the coin in difficult mode <br />
 
@@ -32,11 +32,14 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
   - Make and design Man, ground, and pipe components
   - Set the background and animate the ground movement
   - Make and design the restart button
+  - Put the background music
   - Test and update Jason's work
 
   Jason: </br>
   - Make and design main menu scene
-  - Give functionality to play button, main menu button, pause button, and continue button. Also improve the restart button. 
+  - Give functionality to play button, main menu button, pause button, audio button 
+  and continue button. Also improve the restart button. 
   - Test and update Thomas's work
+  
 
 
