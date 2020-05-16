@@ -30,9 +30,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var menuBTN = SKSpriteNode()
     var restartBtn = SKSpriteNode()
     var startBTN = SKSpriteNode()
-    var pausedButton = SKSpriteNode()
-    var passPipeSound = SKAudioNode()
+    var pausedBTN = SKSpriteNode()
+    var audioBTN = SKSpriteNode()
+    var bgmSound = SKAudioNode()
     var pause = false
+    var mute = true
     var isDied = Bool()
     
     override func didMove(to view: SKView) {
@@ -40,9 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
-        if isDied == true || isStarted == false{
-            
+        if isDied == true || isStarted == false || pause == true{
             
         }else{
             moveGround()
@@ -52,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isDied == true{
+        if isDied == true || pause == true {
             
         }else{
             man.physicsBody?.affectedByGravity = true
@@ -60,30 +60,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             man.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 180))
             isStarted = true
             self.tapLbl.isHidden = true
-            self.pausedButton.isHidden = false
+            self.pausedBTN.isHidden = false
         }
         
         
         for touch in touches{
             let location = touch.location(in: self)
-            if pausedButton.contains(location){
-                self.createMenuLbl()
-                self.createPlayBtn()
-                self.createRestartBtn()
-                self.man.physicsBody?.isDynamic = false
-                self.pipPair.isPaused = true
-                //self.removeAllActions()
-                isStarted = false
-                pause = true
-                
-                
-            }
-            if(isDied == true || pause == true){
-                if restartBtn.contains(location){
-                    restartSence()
+            if(pause == false){
+                if pausedBTN.contains(location){
+                    self.createMenuLbl()
+                    self.createPlayBtn()
+                    self.createRestartBtn()
+                    self.createAudioBtn()
+                    self.man.physicsBody?.isDynamic = false
+                    self.pipPair.isPaused = true
+                    isStarted = false
+                    pause = true
+                    self.pausedBTN.isHidden = true
                 }
+                
             }
-            if(pause == true){
+            else if(pause == true){
                 if startBTN.contains(location){
                     pause = false
                     self.man.physicsBody?.isDynamic = true
@@ -92,14 +89,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     self.startBTN.isHidden = true
                     self.restartBtn.isHidden = true
                     self.menuBTN.isHidden = true
+                    self.audioBTN.isHidden = true
                 }
-            }
-            if(pause == true){
-                if menuBTN.contains(location){
+                else if (menuBTN.contains(location)){
                     let transition = SKTransition.flipVertical(withDuration: 0.3)
                     let menuScene = GameScene(fileNamed: "MenuScene")
                     menuScene?.scaleMode = .aspectFill
-                    self.view?.presentScene(menuScene!,transition: transition)                }
+                    self.view?.presentScene(menuScene!,transition: transition)
+                }
+                else if (audioBTN.contains(location)){
+                    if(mute == true){
+                        bgmSound.run(SKAction.stop())
+                        mute = false
+                    }else{
+                        bgmSound.run(SKAction.play())
+                        mute = true
+                    }
+                }else{
+                    
+                }
+            }
+            
+            if(isDied == true || pause == true){
+                if restartBtn.contains(location){
+                    restartSence()
+                }
             }
         }
     }
@@ -127,7 +141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func createMenuLbl(){
         menuBTN = SKSpriteNode(imageNamed: "menu")
         menuBTN.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90 - 200)
-        menuBTN.size = CGSize(width: 120, height: 120)
+        menuBTN.size = CGSize(width: 150, height: 150)
         menuBTN.zPosition = 5
         self.addChild(menuBTN)
     }
@@ -140,6 +154,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(startBTN)
     }
     
+    func createAudioBtn(){
+        audioBTN = SKSpriteNode(imageNamed: "audio")
+        audioBTN.position = CGPoint(x: self.frame.width / 90 , y: self.frame.height / 90 + 400)
+        audioBTN.size = CGSize(width: 150, height: 150)
+        audioBTN.zPosition = 5
+        self.addChild(audioBTN)
+    }
+    
     func createRestartBtn(){
         restartBtn = SKSpriteNode(imageNamed: "restart")
         restartBtn.position = CGPoint(x: self.frame.width / 90, y: self.frame.height / 90)
@@ -149,12 +171,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func createPausedBTN(){
-        pausedButton = SKSpriteNode(imageNamed: "pause")
-        pausedButton.position = CGPoint(x: self.frame.width / 90 + 200, y: self.frame.height / 90 + 500)
-        pausedButton.size = CGSize(width: 75, height: 75)
-        pausedButton.zPosition = 6
-        self.pausedButton.isHidden = true
-        addChild(pausedButton)
+        pausedBTN = SKSpriteNode(imageNamed: "pause")
+        pausedBTN.position = CGPoint(x: self.frame.width / 90 + 200, y: self.frame.height / 90 + 500)
+        pausedBTN.size = CGSize(width: 100, height: 100)
+        pausedBTN.zPosition = 6
+        self.pausedBTN.isHidden = true
+        addChild(pausedBTN)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -223,7 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             
             pipDown.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 + 400)
             pipUp.position = CGPoint(x: self.frame.width, y: self.frame.height / 5 - 800)
-            
+
             pipDown.setScale(1)
             pipUp.setScale(1)
             
@@ -253,9 +275,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
     }
     
-    func playCrossPipeSound(){
-        passPipeSound = SKAudioNode(fileNamed: "passSound")
-        
+    func playbgm(){
+        bgmSound = SKAudioNode(fileNamed: "Flappy Bird Theme Song")
+        self.addChild(bgmSound)
     }
     
     
@@ -327,6 +349,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         createGround()
         createFlappyMan()
         createPausedBTN()
+        playbgm()
         let spawn = SKAction.run({
             () in
             self.createPipe()

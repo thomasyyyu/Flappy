@@ -18,6 +18,7 @@
 		3B87C0C6244D85480064CF80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B87C0C4244D85480064CF80 /* LaunchScreen.storyboard */; };
 		3B87C0D1244D85480064CF80 /* Filpping_BirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0D0244D85480064CF80 /* Filpping_BirdTests.swift */; };
 		3B87C0DC244D85480064CF80 /* Filpping_BirdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */; };
+		3B89AD9F246F6EE000E7091C /* Flappy Bird Theme Song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B89AD9E246F6EE000E7091C /* Flappy Bird Theme Song.mp3 */; };
 		3BA50C89246286C800A9822D /* RandomFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA50C88246286C800A9822D /* RandomFunc.swift */; };
 		3BAC04CA246CBE5500B15C21 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC04C9246CBE5500B15C21 /* MenuScene.swift */; };
 		3BAC04CE246CC71000B15C21 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC04CD246CC71000B15C21 /* MenuScene.sks */; };
@@ -59,6 +60,7 @@
 		3B87C0D7244D85480064CF80 /* Filpping BirdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Filpping BirdUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B87C0DB244D85480064CF80 /* Filpping_BirdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filpping_BirdUITests.swift; sourceTree = "<group>"; };
 		3B87C0DD244D85480064CF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B89AD9E246F6EE000E7091C /* Flappy Bird Theme Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Flappy Bird Theme Song.mp3"; sourceTree = "<group>"; };
 		3BA50C88246286C800A9822D /* RandomFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFunc.swift; sourceTree = "<group>"; };
 		3BAC04C9246CBE5500B15C21 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		3BAC04CD246CC71000B15C21 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				3B87C0B7244D85460064CF80 /* GameScene.sks */,
 				3B87C0B9244D85460064CF80 /* Actions.sks */,
 				3BAC04CF246D238500B15C21 /* passSound.wav */,
+				3B89AD9E246F6EE000E7091C /* Flappy Bird Theme Song.mp3 */,
 				3B87C0BB244D85460064CF80 /* GameScene.swift */,
 				3B87C0BD244D85460064CF80 /* GameViewController.swift */,
 				3B87C0BF244D85460064CF80 /* Main.storyboard */,
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B87C0C1244D85460064CF80 /* Main.storyboard in Resources */,
+				3B89AD9F246F6EE000E7091C /* Flappy Bird Theme Song.mp3 in Resources */,
 				3BAC04D0246D238500B15C21 /* passSound.wav in Resources */,
 				3B3655B9246B705000A92BFA /* 04B_19__.TTF in Resources */,
 				3B87C0B8244D85460064CF80 /* GameScene.sks in Resources */,
