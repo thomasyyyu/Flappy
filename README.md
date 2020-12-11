@@ -1,9 +1,6 @@
 # Flappy-Man
 
-Team member:
-Jason Wei(917194829) & Thomas Yu (916984372)
-
-All our work will be pushed by Thomas because Jason doesn't have a mac, and we do work through zoom.
+Thomas Yu (916984372)
 
 
 #	Proposal
@@ -27,19 +24,7 @@ All our work will be pushed by Thomas because Jason doesn't have a mac, and we d
 - [ ] User should be able to gain double score when he touches the coin in difficult mode <br />
 
 # Prototype
-##### Team Member Contribution
-  Thomas: </br>
-  - Make and design Man, ground, and pipe components
-  - Set the background and animate the ground movement
-  - Make and design the restart button
-  - Put the background music
-  - Test and update Jason's work
 
-  Jason: </br>
-  - Make and design main menu scene
-  - Give functionality to play button, main menu button, pause button, audio button 
-  and continue button. Also improve the restart button. 
-  - Test and update Thomas's work
   
 
 
